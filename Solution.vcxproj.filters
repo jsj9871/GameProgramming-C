@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ClassData">
+      <UniqueIdentifier>{b7b48c89-dfdf-464d-afcc-3277f9206791}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.c">
@@ -24,6 +27,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="2022.08.10.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="(비트)2022.08.11.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
