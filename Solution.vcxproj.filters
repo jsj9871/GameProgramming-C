@@ -35,5 +35,8 @@
     <ClInclude Include="(조건문)2022.08.12.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="(Switch문)2022.08.16.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

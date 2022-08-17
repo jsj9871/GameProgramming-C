@@ -2,126 +2,80 @@
 
 void main()
 {
-	// 사분면
+	// 반복문
+	// 프로그램 내에서 특정한 작업을 반복적으로 수행하는 명령문
+
+	// 증감 연산자
 	/*
-	// 제 1 사분면 : (+x, +y)
-	// 제 2 사분면 : (-x, +y)
-	// 제 3 사분면 : (-x, -y)
-	// 제 4 사분면 : (+x, -y)
-	// Y 절편 : (x[0], y)
-	// X 절편 : (x, y[0])
-	// 원점 : (x[0], y[0])
+	// 피연산자를 하나씩 증가시키거나 감소시킬 때 사용
 
-	int x = 10;
-	int y = 20;
+	// 전위 (증가, 감소)
+	// 변수의 값을 증감시킨 후 연산 수행
 
-	if (x > 0 && y > 0)
+	int value = 0;
+
+	int result = ++value;
+
+	printf("value 변수의 전위 증가 값 : %d\n", result);
+
+	// 후위 (증가, 감소)
+	// 연산 수행 후 변수 값 증가
+
+	result = value++;
+
+	printf("value 변수의 후위 증가 값 : %d\n", result);
+
+	printf("result의 결과 : %d", value);
+	*/
+
+	// for
+	// 초기식을 연산하여 조건식의 결과에 따라 특정 횟수만큼 반복
+	
+	// 1. 조건식 (i = 0)
+	// 2. 조건식 (i가 5보다 작을 때)
+	// 3. 실행하고 싶은 명령문
+	// 4. 증감식
+	/*
+	for (int i = 0; i < 11; i++)
 	{
-		printf("제 1 사분면");
-	}
-
-	else if (x < 0 && y > 0)
-	{
-		printf("제 2 사분면");
-	}
-
-	else if (x < 0 && y < 0)
-	{
-		printf("제 3 사분면");
-	}
-
-	else if (x > 0 && y < 0)
-	{
-		printf("제 4 사분면");
-	}
-
-	else if (x == 0 && y != 0)
-	{
-		printf("Y 절편");
-	}
-
-	else if (x != 0 && y == 0)
-	{
-		printf("X 절편");
-	}
-
-	else
-	{
-		printf("원점");
+		printf("안녕하세요\n");
 	}
 	*/
 
-	// 논리연산자
-	// && (AND) : 두개의 조건 모두 참이면 조건 실행
-	// || (OR) : 두 개의 조건에 하나라도 참이면 조건 실행
-
+	// for문 이용해서 순차적으로 증가하는 초기식의 값을 출력해주세요.
+	// 초기식이 1 ~ 5 까지의 수 출력
 	/*
-	if (x == 10 && y == 20)
+	for (int i = 1; i <= 5; i++)
 	{
-		printf("논리 연산 AND가 참입니다.\n");
+		printf("%d\n", i);
+	}
 
-		if (5 < 10)
+	for (int i = 5; i >= 1; i--)
+	{
+		printf("%d\n", i);
+	}
+	*/
+
+	// 약수
+	// 어떤 수를 나누어떨어지게 하는 수
+	/*
+	int value = 6;
+
+	for (int i = 1; i <= value; i++)
+	{
+		if ((value % i) == 0)
+			printf("%d\n", i);
+	}
+	*/
+
+	// 2중 for문
+	for (int i = 0; i < 3; i++)
+	{
+		printf("주황색\n");
+
+		for (int j = 0; j < 3; j++)
 		{
-			printf("if문 안에 있는 조건문입니다.\n");
+			printf("검은색\n");
 		}
 	}
-
-	if (x == 10 || y == 25)
-	{
-		printf("논리 연산 OR이 참입니다.\n");
-	}
-	*/
-
-	// switch
-	
-	// 어떤 결과에 따라 그 결과부터 실행되는 조건문
-
-	float variable = 3.25;
-	
-	switch (variable)
-	{
-		case 3.25 : printf("부동 소수점 오차로 인해 switch 조건 사용 불가");
-			break;
-	}
-
-	// break문
-	// 특정한 시점에서 분기를 탈출하는 제어문
-	/*
-	int value = 5;
-	
-	switch (value)
-	{
-		case 0 : printf("0 입니다.");
-			break;
-		case 1 : printf("1 입니다.");
-			break;
-		default : printf("잘못 선택했습니다.");
-	}
-
-
-	// 대학 성적표
-	// A는 100 ~ 90점
-	// B는 90 ~ 80점
-	// C는 80 ~ 70점
-	// D는 70 ~ 60점
-	// E는 60 ~ 50점
-	// 과락
-
-	char alphabet = 'C';
-
-	switch (alphabet)
-	{
-		case 'A' : printf("100 ~ 90점");
-			break;
-		case 'B' : printf("90 ~ 80점");
-			break;
-		case 'C' : printf("80 ~ 70점");
-			break;
-		case 'D' : printf("70 ~ 60점");
-			break;
-		case 'E' : printf("60 ~ 50점");
-			break;
-		default : printf("과락");
-	}
-	*/
 }	

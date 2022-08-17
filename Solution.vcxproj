@@ -142,6 +142,7 @@
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="(Switch문)2022.08.16.h" />
     <ClInclude Include="(비트)2022.08.11.h" />
     <ClInclude Include="(조건문)2022.08.12.h" />
     <ClInclude Include="2022.08.09.h" />
