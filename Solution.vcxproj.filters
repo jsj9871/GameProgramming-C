@@ -29,13 +29,16 @@
     <ClInclude Include="2022.08.10.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="(비트)2022.08.11.h">
+    <ClInclude Include="2022.08.11%28비트%29.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="(조건문)2022.08.12.h">
+    <ClInclude Include="2022.08.12%28조건문%29.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="(Switch문)2022.08.16.h">
+    <ClInclude Include="2022.08.16%28Switch문%29.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.08.17(반복문).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
