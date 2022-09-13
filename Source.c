@@ -1,122 +1,78 @@
+#pragma once
 #include <stdio.h>
+#include <stdlib.h>	// 메모리 할당 함수 라이브러리
+#include <time.h>
 
-// 함수의 원형
-// 호출할 함수를 컴파일러에게 미리 알려주는 과정  
-// 단일 패스 컴파일(O), 멀티 패스 컴파일
-void Function(char* name, void* value);
-
-void Integer(int x)
+// 매개 변수는 함수 내부에서만 사용가능한 변수
+// 매개 변수가 포인터로 선언되면, 변수의 주소를 전달
+void Swap(int* x, int* y)
 {
-	printf("Integer 함수의 x 값 : %d\n", x);
-}
+	// x만 출력하면 포인터 변수 x(주소)만 출력
+	// 그래서 *(애스터리스크) 연산자를 사용하여 메모리에 접근하여 값을 출력
+	int temp = *x;
 
-void Decimal(float x)
-{
-	printf("Decimal 함수의 x 값 : %f\n", x);
-}
+	*x = *y;
 
-void Character(char x)
-{
-	printf("Character 함수의 x 값 : %c\n", x);
-}
+	*y = temp;
 
-// Swap 함수에서 값을 바꾸는 로직을 만들어라
-void Swap(int x, int y)
-{
-	// 매개 변수에 x(10), y(20)
-	// 지역 변수 temp = y(20)
-	int temp = y;
-
-	// y(10) <- x(10)
-	y = x;
-
-	// x(20) <- tmep(20) 
-	x = temp;
-}
-
-void Plus(int x, int y)
-{
-	printf("더하기 함수의 결과 : %d", x + y);
-}
+	// x 변수가 가리키는 주소와 y 변수가 가리키는 주소를 출력
+	printf("매개 변수 x의 주소 : %p, 매개 변수 y의 주소 : %p\n", x, y);
+} // <-	함수가 종료되는 순간 매개 변수 x와 y값이 사라짐
 
 void main()
 {
-	// 범용(void) 포인터
+	// 참조에 의한 호출
 	/*
-	// 자료형이 정해지지 않은 상태로 모든 자료형을 저장할 수 있는 포인터
-	int value = 10;
-	void * ptr = &value;
-	// 범용 포인터는 메모리 주소에 접근해서 값을 변경 X
-	*(int *)ptr = 20;
-	printf("ptr이 가리키는 값 : %d\n", *(int *)ptr);
-	// 범용 포인터로 변수의 메모리에 접근하려면 범용 포인터가 가리키는
-	// 변수의 자료형으로 형 변환을 해주어야 함
-	float decimal = 10.5;
-	ptr = &decimal;
-	*(float*) ptr = 20.5;
-	printf("ptr이 가리키는 값 : %f\n", *(float*) ptr);
-
-	// 내가 함수에 입력하는 데이터(변수)가 출력되도록 하고 싶을 때
-	// char(문자) int(정수) float(실수)
-	//Integer(50);
-	//Character('A');
-	//Decimal(10.5);
-	int A = 10;
-	float B = 99.6;
-	char C = 'R';
-	Function("int", &A); // <-
-	Function("float", &B);
-	Function("char", &C);
+	// 함수 호출 시 전달되는 변수의 주소를 함수의 인수로 전달하는 방법
+	int x = 10;
+	int y = 20;
+	printf("x 변수의 값 : %d, y 변수의 값 : %d\n", x, y);
+	 // ex) x의 주소 : 00FF46DB, y의 주소 : 00FF60DB
+	Swap(&x, &y);
+	printf("x 변수의 값 : %d, y 변수의 값 : %d\n", x, y);
+	// 참조에 의한 호출은 매개 변수에 변수의 주소를 넘겨준 다음
+	// 외부에 있는 변수의 주소가 참조되어 외부에 있는 변수에 영향
+	// 값에 의한 호출은 매개 변수에 값만 넘겨주므로 외부에 있는 변수의 값이 변경되지 않음
 	*/
 
-	// 두 개의 변수의 값 바꿔라
-	// 하나의 임시 변수를 만들어서 거기에 값을 보관했다가 옮기면 됨
-	int A = 10;
-	int B = 20;
+	// 동적 할당이란?
+	/*
+	// 프로그램이 실행 중에 사용자가 필요한 만큼 메모리를 할당하는 작업
+	// 4 byte 메모리
+	// 포인터 변수 ptr
+	// 스택 			      힙
+	// ptr -----------> [][][][]
+	// 4 byte 크기의 메모리 공간을 할당
+	// 포인터 변수 ptr은 동적으로 할당한 메모리의 시작 주소를 가리킴
+	int * ptr = (int *)malloc(sizeof(int));
+	// 메모리를 동적 할당할 때 주소를 범용 포인터로
+	// 반환하기 때문에 자료형을 변환한 다음 메모리에 할당해야 함
+	*ptr = 10;
+	printf("ptr이 가리키는 주소 : %p\n", ptr);
+	printf("ptr이 가리키는 값 : %d\n", * ptr);
+	// 동적 할당한 메모리는 free함수를 통해 해제
+	// 동적 할당한 메모리는 해제하지 않고 방치하게 되면 메모리 누수가 발생
+	free(ptr);
+	*/
 
-	//printf("변수 A의 값 : %d, 변수 B의 값 : %d\n", A, B);
+	// 메모리
+	// 코드 영역
+	// 데이터 영역
+	// 힙 영역 <- 동적 할당
+	// 스택 영역
 
-	//  10  20
-	// 값에 의한 호출
-	// 함수 호출 시 전달되는 변수의 값을 복사하여
-	// 함수의 인자로 전달하는 방법
-	Swap(A, B);
-	Plus(10, 20);
-	//printf("변수 A의 값 : %d, 변수 B의 값 : %d\n", A, B);
+	// rand() : 0 ~ 32767 사이의 난수 값을 반환
+	// 컴퓨터는 완벽한 랜덤을 만들 수 없음
+	// 시간을 가져와서 1970년 1월 1일 기준으로 시간을 가져와서 랜덤을 생성
 
-	// 더하기 함수 (2개의 매개 변수)
-	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
-	// 함수(10,20) = 30
+	// 1 ~ 10사이의 난수값만 나올 수 있도록 설정
+	// % 연산자를 사용
 
-	// 빼기 함수 (2개의 매개 변수)
-	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
-	// 함수(5,5) = 0
+	srand(time(NULL));
 
-	// 곱셈 함수 (2개의 매개 변수)
-	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
-	// 함수(5,5) = 25 
-
-	// 나눗셈 함수 (2개의 매개 변수)
-	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
-	// 함수(10,10) = 1 
-}
-
-void Function(const char* name, void* value)
-{
-	printf("%p\n", name); // name 변수의 시작 주소 ex) 00FF55DA
-	printf("%s\n", name); // name 변수의 문자열 int == int					 
-
-	// if문이 비교되는 원리는 %s로 구분
-	if (name == "int")
+	for (int i = 0; i < 10; i++)
 	{
-		printf("%d\n", *(int*)value);
-	}
-	else if (name == "float")
-	{
-		printf("%f\n", *(float*)value);
-	}
-	else if (name == "char")
-	{
-		printf("%c\n", *(const char*)value);
+		// rand()  0 ~ 32767 % 10 + 1
+		printf("%d\n", rand() % 10 + 1);
 	}
 }

@@ -154,6 +154,7 @@
     <ClInclude Include="2022.08.23%28배열의 설명%29.h" />
     <ClInclude Include="2022.08.24(문자열).h" />
     <ClInclude Include="2022.08.25(함수).h" />
+    <ClInclude Include="2022.08.26(함수의 호출).h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
