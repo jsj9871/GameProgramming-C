@@ -23,10 +23,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2022.08.09.h">
+    <ClInclude Include="2022.08.09%28자료형%29.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="2022.08.10.h">
+    <ClInclude Include="2022.08.10%28상수%29.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="2022.08.11%28비트%29.h">
@@ -51,6 +51,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="2022.08.22(2차원 배열).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.08.25(함수).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.08.24(문자열).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

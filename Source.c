@@ -1,108 +1,122 @@
 #include <stdio.h>
 
+// 함수의 원형
+// 호출할 함수를 컴파일러에게 미리 알려주는 과정  
+// 단일 패스 컴파일(O), 멀티 패스 컴파일
+void Function(char* name, void* value);
+
+void Integer(int x)
+{
+	printf("Integer 함수의 x 값 : %d\n", x);
+}
+
+void Decimal(float x)
+{
+	printf("Decimal 함수의 x 값 : %f\n", x);
+}
+
+void Character(char x)
+{
+	printf("Character 함수의 x 값 : %c\n", x);
+}
+
+// Swap 함수에서 값을 바꾸는 로직을 만들어라
+void Swap(int x, int y)
+{
+	// 매개 변수에 x(10), y(20)
+	// 지역 변수 temp = y(20)
+	int temp = y;
+
+	// y(10) <- x(10)
+	y = x;
+
+	// x(20) <- tmep(20) 
+	x = temp;
+}
+
+void Plus(int x, int y)
+{
+	printf("더하기 함수의 결과 : %d", x + y);
+}
+
 void main()
 {
-	// 문자열
-	// 연속적인 메모리 공간에 지정된 문자 변수의 집합
-		/*
-	// char : 1 byte이므로 하나의 문자만 저장할 수 있습니다.
-	char alphabet = 'A';
-
-	char string[6] = { 'A', 'B', 'C', 'D', 'E'};
-
-	string[0] = 'T';
-
-	// 문자 배열을 선언할 때 맨 마지막에 NULL만 포함
-	// 문자 배열은 배열 크기 n + 1로 설정
-	printf("string 배열의 값 : %s\n", string);
-
-	// NULL문자는 문자열의 끝을 알려주는 제어 문자
-
-	// [T] [B] [\0] [D] [E]
-	string[2] = '\0';
-
-	// 문자 배열 중간에 NULL문자가 있으면 NULL문자 이전의 문자열까지만 출력
-	printf("string 배열의 값 : %s\n", string);
-	*/
-
-	// 문자열 초기화
+	// 범용(void) 포인터
 	/*
-	// 코드 영역
-	// 데이터 영역 -> BSS, Read Only Data Segment
-	// 스텍
-	// 힙
+	// 자료형이 정해지지 않은 상태로 모든 자료형을 저장할 수 있는 포인터
+	int value = 10;
+	void * ptr = &value;
+	// 범용 포인터는 메모리 주소에 접근해서 값을 변경 X
+	*(int *)ptr = 20;
+	printf("ptr이 가리키는 값 : %d\n", *(int *)ptr);
+	// 범용 포인터로 변수의 메모리에 접근하려면 범용 포인터가 가리키는
+	// 변수의 자료형으로 형 변환을 해주어야 함
+	float decimal = 10.5;
+	ptr = &decimal;
+	*(float*) ptr = 20.5;
+	printf("ptr이 가리키는 값 : %f\n", *(float*) ptr);
 
-	// "count"
-	// [c][o][u][n][t][\0] -> char + null = 6 byte
-
-	// 4 byte 변수의 메모리를 저장할 수 있는 포인터 변수
-	// char * ptr -> [c][o][u][n][t][\0]
-	const char* ptr = "count";
-
-	// 포인터 변수가 어디를 가리키고 있는지 확인하기 위해서
-	// 거기 있는 값을 출력하기 위해서 %c로 출력
-
-	// ptr[0] = "T";
-	// *ptr 하면 포인터가 가리키고 있는 위치에 접근해서 값 출력
-
-	// ptr = count
-	// "%s" 문자열의 시작주소로 접근해서 값을 count 출력
-	printf("ptr이 가리키는 주소 : %p\n", ptr);
-	printf("ptr이 가리키는 값 : %c\n", ptr[0]);
-	printf("ptr이 가리키는 문자열의 값 : %s\n", ptr);
+	// 내가 함수에 입력하는 데이터(변수)가 출력되도록 하고 싶을 때
+	// char(문자) int(정수) float(실수)
+	//Integer(50);
+	//Character('A');
+	//Decimal(10.5);
+	int A = 10;
+	float B = 99.6;
+	char C = 'R';
+	Function("int", &A); // <-
+	Function("float", &B);
+	Function("char", &C);
 	*/
 
-	// 이중 포인터
-	/*
-	// [4 byte]
-	int value = 100;
+	// 두 개의 변수의 값 바꿔라
+	// 하나의 임시 변수를 만들어서 거기에 값을 보관했다가 옮기면 됨
+	int A = 10;
+	int B = 20;
 
-	// ptr(value 주소) -> value 주소를 가리킴
-	int* ptr = &value;
+	//printf("변수 A의 값 : %d, 변수 B의 값 : %d\n", A, B);
 
-	// twoPtr(이중 포인터)은 ptr이라는 포인터 변수의 주소 저장
-	// twoPtr(ptr의 주소) -> ptr의 시작 주소를 가리킴
-	int** twoPtr = &ptr;
+	//  10  20
+	// 값에 의한 호출
+	// 함수 호출 시 전달되는 변수의 값을 복사하여
+	// 함수의 인자로 전달하는 방법
+	Swap(A, B);
+	Plus(10, 20);
+	//printf("변수 A의 값 : %d, 변수 B의 값 : %d\n", A, B);
 
-	printf("value의 시작 주소 : %p\n", &value);
-	printf("ptr이 가리키는 값 : %p\n", ptr);
-	printf("twoPtr이 가리키는 값 : %p\n", twoPtr);
+	// 더하기 함수 (2개의 매개 변수)
+	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
+	// 함수(10,20) = 30
 
-	printf("ptr 변수가 가리키는 변수의 값 : %d\n", *ptr);
-	printf("twoPtr 변수가 가리키는 변수의 값 : %d", **twoPtr);
+	// 빼기 함수 (2개의 매개 변수)
+	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
+	// 함수(5,5) = 0
 
-	// twoPtr(00AAEE66)  ptr(00FF883A)       value
-	//   [00FF883A] ----> [00DDFC55] ----> [00DDFC55]
-	*/
+	// 곱셈 함수 (2개의 매개 변수)
+	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
+	// 함수(5,5) = 25 
 
-	// 소수 판별하기
-	/*
-	// 소수(1보다 큰 자연수 중에 1과 자신만을 약수로 가지는 수)
-	
-	// 내가 입력한 숫자가 소수인지 아닌지 판별하는 프로그램
-	// ex) 5 -> 소수입니다.
-	// ex) 6 -> 소수가 아닙니다.
+	// 나눗셈 함수 (2개의 매개 변수)
+	// 2개 인수에 값이 넣어서 계산되는 결괏값을 출력
+	// 함수(10,10) = 1 
+}
 
-	int count = 0;
-	int value;
+void Function(const char* name, void* value)
+{
+	printf("%p\n", name); // name 변수의 시작 주소 ex) 00FF55DA
+	printf("%s\n", name); // name 변수의 문자열 int == int					 
 
-	scanf_s("%d", &value);
-
-	for (int i = 2; i < value - 1; i++)
+	// if문이 비교되는 원리는 %s로 구분
+	if (name == "int")
 	{
-		if (value % i == 0)s
-		{
-			count++;
-		}
+		printf("%d\n", *(int*)value);
 	}
-
-	if (count == 0)
+	else if (name == "float")
 	{
-		printf("소수입니다.");
+		printf("%f\n", *(float*)value);
 	}
-	else
+	else if (name == "char")
 	{
-		printf("소수가 아닙니다.");
+		printf("%c\n", *(const char*)value);
 	}
-	*/
 }

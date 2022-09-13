@@ -145,13 +145,15 @@
     <ClInclude Include="2022.08.16%28Switch문%29.h" />
     <ClInclude Include="2022.08.11%28비트%29.h" />
     <ClInclude Include="2022.08.12%28조건문%29.h" />
-    <ClInclude Include="2022.08.09.h" />
-    <ClInclude Include="2022.08.10.h" />
+    <ClInclude Include="2022.08.09%28자료형%29.h" />
+    <ClInclude Include="2022.08.10%28상수%29.h" />
     <ClInclude Include="2022.08.17(반복문).h" />
     <ClInclude Include="2022.08.18(자료형 변환).h" />
     <ClInclude Include="2022.08.19%28입력 함수%29.h" />
     <ClInclude Include="2022.08.22(2차원 배열).h" />
     <ClInclude Include="2022.08.23%28배열의 설명%29.h" />
+    <ClInclude Include="2022.08.24(문자열).h" />
+    <ClInclude Include="2022.08.25(함수).h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
