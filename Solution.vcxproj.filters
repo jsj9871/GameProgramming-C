@@ -65,5 +65,17 @@
     <ClInclude Include="2022.08.29(동적 할당).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="2022.08.30(재귀 함수).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.08.31(함수 포인터).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.09.01(포인터 배열).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.09.02(전처리기).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
