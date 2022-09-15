@@ -83,5 +83,8 @@
     <ClInclude Include="2022.09.13(키 입력).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="2022.09.14(열거형).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
