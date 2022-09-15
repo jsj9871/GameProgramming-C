@@ -77,5 +77,11 @@
     <ClInclude Include="2022.09.02(전처리기).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="2022.09.05(연산의 과정).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.09.13(키 입력).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
