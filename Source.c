@@ -1,98 +1,108 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-#include <conio.h>
-#include <windows.h>
-#include <mmsystem.h>
 
-#pragma comment(lib, "winmm.lib")
-
-enum textColor
+struct Object
 {
-    BLACK,
-    BLUE,
-    GREEN,
-    SILVER,
-    RED,
-    OFTEN,
-    YELLOW,
-    WHITE,
-    GRAY
+    // 구조체는 선언만 해놓은 상태는 메모리 생성 X
+    short size; // 2 BYTE
+    int height; // 4 BYTE
+    double position;    // 8 BYTE
 };
 
-void CursorActive()
+struct Monster
 {
-    CONSOLE_CURSOR_INFO cursor;
-    GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
+    int health; // 4 BYTE
+    double attack;  // 8 BYTE
+    short defense;  // 2 BYTE
+};
 
-    // .bVisible = 커서 노출 여부에 대한 변수
-    // 0일 때 마우스 커서 비활성화
-    // 1일 때 마우스 커서 활성화
-    cursor.bVisible = 0;
+struct Data
+{
+    int x;  // 4 BYTE
+    int y;  // 4 BYTE
+};
 
-    //  SetConsoleCursorInfo() : 지정되어 있는 콘솔 스크린 버퍼에 대하여 커서의 형태를 설정
-    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
-}
+struct Shape
+{
+    char name[10];   // 10 BYTE
+    double size;    // 8 BYTE
+
+    // [] [] [] [] [] [] [] [] / [] [](6byte padding) / size 8 byte 변수
+};
+
+struct Animal
+{
+    int leg;
+    double size;
+};
 
 int main()
 {
-	// 파일 쓰기
-	/*
-	// fopen()
-	// 첫 번째 매개변수 = 텍스트 파일의 이름
-	// 두 번째 매개변수 = 텍스트 파일의 입출력 모드 (read / write)
-	FILE* filePointer = fopen("data.txt", "w");
-
-	// fputs : 파일에 문자를 하나씩 쓰는 함수
-	fputs("체력\n", filePointer);
-	fputs("마력\n", filePointer);
-	fputs("공격력\n", filePointer);
-
-	// 열어놓은 파일을 닫아줌
-	fclose(filePointer);
-	*/
-
-	// 파일 읽기
+    // 바이트 패딩
     /*
-	FILE* readPointer = fopen("Resources/Dragon.txt", "r");
+    // 멤버 변수를 메모리에서 CPU로 읽을 때 한 번에 읽을 수 있도록
+    // 컴파일러가 레지스터의 블록에 맞추어 바이트를 패딩 해주는 최적화 작업
+    
+    // 구조체는 정의해줘야 멤버 변수의 메모리가 생기므로
+    // 멤버 변수의 데이터 초기화 가능
+    struct Object character = { 10, 100, 3.5f };
+    struct Data data = { 10, 10 };
 
-	// text 파일의 문자 데이터를 담을 수 있는 버퍼 선언
-	char buffer[10000] = { 0, };
-			
-	// 첫 번째 매개변수 : 읽기 위한 버퍼 배열을 정의
-	// 두 번째 매개변수 : 크기를 가지는 배열을 가리키는 포인터
-	// 세 번째 매개변수 : 읽어들일 원소의 크기로 단위는 바이트
-	// 네 번째 매개변수 : 데이터를 입력 받을 스트림의 FILE 객체를 가리키는 포인터
-	fread(buffer, 1, 10000, readPointer);
+    // 구조체 크기의 경우 멤버 변수의 순서에 따라 메모리 크기 다르게 설정될 수 있으며,
+    // 구조체 크기를 결정하는 형태는 기본 자료형으로만 구성
+    struct Monster dragon = {100, 30.5f, 10};
 
-	printf("%s", buffer);
+    struct Shape circle;
 
-	fclose(readPointer);
+    // const char * name ---> Circle
+    // char [10] name ---> memcpy (메모리 복사 함수)
+    // "Circle" --> name 배열에 메모리 복사
+    // circle.name = "Circle";
+
+    printf("Data 구조체의 크기 : %d\n", sizeof(data));
+    printf("Object 구조체의 크기 : %d\n", sizeof(character));
+    printf("Monster 구조체의 크기 : %d\n", sizeof(dragon));
+    printf("Shape 구조체의 크기 : %d\n", sizeof(circle));
+
+    // align 규칙
+    // CPU가 데이터를 읽을 때
+    // 홀수 X / 짝수 O -> 2, 4, 8 byte
+    // 32 bit OS에서 4 byte씩 메모리를 읽고, 64bit OS에서는 8 byte씩 읽음
+
+    // 구조체의 크기는 구조체를 구성하는 멤버 중에
+    // 크기가 가장 큰 자료형의 배수가 되도록 정렬
     */
 
+    // 구조체 포인터
     /*
-    // 영어는 1 byte로 표기
-    // 0 ~ 255 (256)가지의 데이터 표현 가능
-    // 영어 : 아스키 코드
-    char array[] = "Hello";
+    // 구조체를 가리키는 포인터
 
-    // 한글은 2 byte로 데이터 표현
-    // 초성 19자, 중성 21자, 종성 28자로 이루어져서 11172자 표현
-    // 한글 : 유니코드
-    char korean[] = "안녕하세요";
+    // 구조체 포인터 선언
+    struct Animal* pointer;
+    printf("구조체 포인터의 크기 : %d\n", sizeof(pointer));
+
+    struct Animal cat;
+
+    // 구조체 주소는 구조체 첫번째 멤버 변수에 있는 시작 주소 의미
+    printf("구조체 cat의 주소 : %p\n", &cat);
+    printf("구조체 cat의 leg 주소 : %p\n", &cat.leg);
+    printf("구조체 cat의 size 주소 : %p\n", &cat.size);
+
+    pointer = &cat;
+
+    // 구조체 포인터로 구조체에 있는 메모리 접근 할 때
+    // -> 연산자 사용
+    pointer->leg = 200;
+    pointer->size = 90.3f;
+
+    // 멤버 연산자를 사용하려면 연산자 우선 순위에 맞추어 작성
+    pointer->leg = 400;
+    pointer->size = 50.6f;
+
+    printf("구조체 포인터 접근한 leg의 값 : %d\n", pointer->leg);
+    printf("구조체 포인터 접근한 size의 값 : %lf\n", pointer->size);
     */
 
-    // SetConsoleTextAttribute() : 텍스트의 색상을 바꿔주는 함수
-    // 0 = 검정색
-    // 1 = 파란색
+    // C언어 포폴 기간 2주
 
-    CursorActive();
-
-    // 사운드 호출
-    // PlaySound는 wav파일만 사용 가능
-    PlaySound(TEXT("Sound.wav"), 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
-
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), WHITE);
-
-	return 0;
+    return 0;
 }
