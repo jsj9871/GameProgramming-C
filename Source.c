@@ -1,92 +1,59 @@
 #include <stdio.h>
-#include <string.h> // 문자열 관련 함수
+#include <string.h>
 
-struct Node
+void MYstrcat(char * str1,  const char * str2)
 {
-    int data;
-    struct Node* pointer;
-};
+    // str1이 NULL문자가 아니라면
+    while (*str1 != '\0')
+    {
+        // str1이 가리키는 포인터 증가
+        str1++;
+    }
+
+    while (*str2 != '\0')
+    {
+        *str1 = *str2;
+        str1++;
+        str2++;
+    }
+}
 
 int main()
 {
-    // 자기 참조 구조체
+    // strump 문자열 비교 함수
     /*
-    // 자신과 동일한 구조체를 가리킬 수 있는 포인터 변수를 멤버 변수로
 
-    struct Node node1 = {10, NULL};
-    struct Node node2 = {20, NULL};
-    struct Node node3 = {30, NULL};
+    char memory1[] = { "ABCD" };    // 65 + 66 + 67 + 68 = 
+    char memory2[] = { "ABCT" };
+    char memory3[] = { "ABCC" };
 
-    struct Node* structPtr = &node1;
+    // strump는 첫 번째 문자열 크기가 크면 양수(+1) 반환
+    //          두 번째 문자열 크기가 크면 음수(-1) 반환
+    //          두 개 문자열 크기가 같으면 0 반환
+    printf("두 개의 문자열을 비교한 값 : %d\n", strcmp(memory1, memory2));
+    printf("두 개의 문자열을 비교한 값 : %d\n", strcmp(memory1, memory3));
 
-    printf("첫 번째 구조체 data의 값 : %d\n", structPtr->data);
+    // strcmp 영어 사전 순서로 우선 순위 결정
 
-    structPtr->pointer = &node2;
+    // strncmp : 첫 번째 매개변수에 비교할 문자열
+    // strncmp : 두 번째 매개변수에 비교할 문자열
+    // strncmp : 세 번째 비교할 문자열 길이
 
-    printf("두 번째 구조체 data의 값 : %d\n", structPtr->pointer->data);
-
-    structPtr->pointer->pointer = &node3;
-
-    printf("세 번째 구조체 data의 값 : %d\n", structPtr->pointer->pointer->data);
+    // ABC == ABC = 0
+    printf("두 개의 문자열을 비교한 값 : %d\n", strncump(memory1, memory2, 5));
     */
 
-    // 문자열 함수
-    
-    // strlen - (문자열 길이 출력)
-    char name[] = { "Bard" };
+    // strcat 문자열 연결 함수
+    char name1[10] = { "Kim" };
+    char name2[] = { "geum" };
 
-    strlen(name);
-    printf("name의 값 : %s\n", name);
+    // strcat : 복사 받을 문자열 크기 넉넉히 지정
+    // name1 [J][o][u][n][g][][][][][]
+    // name2 [S][e][o][n][g][][][][][]
+    //strcat_s(name1, 15, name2);
+    //printf("name1의 문자열 : %s", name1);
 
-    // strlen() : NULL 문자 이전의 길이만 계산
-    printf("name배열 길이 : %d\n", strlen(name));
-
-    // strcpy - (문자열 복사)
-    char A[10] = { "LEAGUE" };
-    char B[10] = { "LEGEND" };
-
-    // read only 영역에 있는 문자열 리터럴이기 때문에 값 변경 X
-    const char* C = "Player";
-    const char* D = "Monster";
-
-    /*
-    // A [10] = LEE
-    // B [10] = DQ
-
-    // A[0] = B[0]
-    // A[1] = B[1]
-    // A[2] = '\0'
-
-    // A와 B는 문자열의 시작 주소 의미
-    // 00FF44D0 <- 00DD22A0(B)
-    //A[0] = B[0];    // L <- L
-    //A[1] = B[1];    // E <- E
-    //A[2] = B[2];    // A <- G
-    //A[3] = B[3];    // G <- U
-    //A[4] = B[4];
-    //A[5] = B[5];
-
-    int i = 0;
-    while (A[i]) // NULL 문자는 0 의미
-    {
-        A[i] = B[i];
-        i++;
-    }   // while문의 값이 false로 변경
-
-    printf("A의 문자열 : %s", A);
-    */
-
-    // strcpy의 첫 번째 매개변수는 복사 받을 문자열
-    //          두 번째 매개변수는 복사할 문자열
-
-    // strcpy_s의 첫 번째 매개변수는 복사 받을 문자열
-    //          두 번째 매개변수는 복사할 메모리 크기
-    //          세 번째 매개변수는 복사할 문자열
-    strcpy_s(A, 10, B);
-    printf("복사한 A 문자열의 값 : %s", A);
-
-    // strcmp - (문자열 비교)
-    // strcat - (문자열 연결)
+    MYstrcat(name1, name2);
 
     return 0;
 }
