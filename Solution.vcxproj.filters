@@ -95,5 +95,8 @@
     <ClInclude Include="2022.09.20(자기참조 구조체).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="2022.09.21(문자열 함수).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -166,6 +166,7 @@
     <ClInclude Include="2022.09.15(파일 입출력).h" />
     <ClInclude Include="2022.09.19(구조체 패딩).h" />
     <ClInclude Include="2022.09.20(자기참조 구조체).h" />
+    <ClInclude Include="2022.09.21(문자열 함수).h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

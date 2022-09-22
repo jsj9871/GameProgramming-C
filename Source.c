@@ -1,59 +1,90 @@
+#define _CRT_SECURE_NO_WARNINGS // strcpy 보안 경고로 인한 컴파일 에러 방지
 #include <stdio.h>
 #include <string.h>
 
-void MYstrcat(char * str1,  const char * str2)
-{
-    // str1이 NULL문자가 아니라면
-    while (*str1 != '\0')
-    {
-        // str1이 가리키는 포인터 증가
-        str1++;
-    }
+// Typedef
+/*
+// 이미 사용되는 자료형을 다른 새로운 자료형으로 재정의할 수 있도록 해주는 키워드
+typedef int INT32;  // int == INT32
 
-    while (*str2 != '\0')
-    {
-        *str1 = *str2;
-        str1++;
-        str2++;
-    }
-}
+// typedef로 구조체 선언할 때 _이름으로 선언하고
+
+typedef struct _Player
+{
+    int x;
+    int y;
+    char name[20];
+    const char* shape;
+}Player;
+*/
 
 int main()
 {
-    // strump 문자열 비교 함수
+    // typedef
     /*
+    int a = 10;
+    INT32 b = 20;
 
-    char memory1[] = { "ABCD" };    // 65 + 66 + 67 + 68 = 
-    char memory2[] = { "ABCT" };
-    char memory3[] = { "ABCC" };
+    printf("a의 값 : %d\n", a);
+    printf("b의 값 : %d\n", b);
 
-    // strump는 첫 번째 문자열 크기가 크면 양수(+1) 반환
-    //          두 번째 문자열 크기가 크면 음수(-1) 반환
-    //          두 개 문자열 크기가 같으면 0 반환
-    printf("두 개의 문자열을 비교한 값 : %d\n", strcmp(memory1, memory2));
-    printf("두 개의 문자열을 비교한 값 : %d\n", strcmp(memory1, memory3));
+    Player player;
 
-    // strcmp 영어 사전 순서로 우선 순위 결정
+    // 
+    char nickName1[] = { "Jason" };
 
-    // strncmp : 첫 번째 매개변수에 비교할 문자열
-    // strncmp : 두 번째 매개변수에 비교할 문자열
-    // strncmp : 세 번째 비교할 문자열 길이
+    strcpy(player.name, nickName1);
 
-    // ABC == ABC = 0
-    printf("두 개의 문자열을 비교한 값 : %d\n", strncump(memory1, memory2, 5));
+    printf("player의 이름 : %s", player.name);
     */
 
-    // strcat 문자열 연결 함수
-    char name1[10] = { "Kim" };
-    char name2[] = { "geum" };
+    // 문제이름 : 합
+    /*
+    // 입력 값 n이 주어졌을때, 1부터 n까지의 합 구하는 프로그램
 
-    // strcat : 복사 받을 문자열 크기 넉넉히 지정
-    // name1 [J][o][u][n][g][][][][][]
-    // name2 [S][e][o][n][g][][][][][]
-    //strcat_s(name1, 15, name2);
-    //printf("name1의 문자열 : %s", name1);
+    // 예제 입력
+    // n = 4
 
-    MYstrcat(name1, name2);
+    // 예제 출력
+    // 10
+
+    int n = 0;  // 입력 값 n 변수
+    int sum = 0;    // 누적해서 값을 출력하는 변수
+
+    scanf_s("%d", &n);
+
+    for (int i = 1; i <= n; i++)
+    {
+        sum += i;
+    }
+
+    printf("결과 값 : %d", sum);
+    */
+
+    // 문제 : 역순 별 찍기
+    /*
+    // 예제 출력
+    //     *
+    //    **
+    //   ***
+    //  ****
+    // *****
+
+    for (int i = 1; i <= 5; i++)
+    {
+        for (int j = 1; j <= 5 - i; j++)
+        {
+            printf(" ");
+        }
+
+        for (int k = 1; k <= i; k++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+    */
 
     return 0;
 }
