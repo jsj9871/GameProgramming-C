@@ -1,90 +1,61 @@
-#define _CRT_SECURE_NO_WARNINGS // strcpy 보안 경고로 인한 컴파일 에러 방지
 #include <stdio.h>
-#include <string.h>
 
-// Typedef
-/*
-// 이미 사용되는 자료형을 다른 새로운 자료형으로 재정의할 수 있도록 해주는 키워드
-typedef int INT32;  // int == INT32
-
-// typedef로 구조체 선언할 때 _이름으로 선언하고
-
-typedef struct _Player
-{
-    int x;
-    int y;
-    char name[20];
-    const char* shape;
-}Player;
-*/
 
 int main()
 {
-    // typedef
+    // 상수에 대한 이해
     /*
-    int a = 10;
-    INT32 b = 20;
+    const int value = 10;
 
-    printf("a의 값 : %d\n", a);
-    printf("b의 값 : %d\n", b);
+    printf("value 변수의 값 : %d", value);
 
-    Player player;
+    // value의 값은 const로 상수화되었으므로 바꿀 수 없음
+    // value = 20;
 
-    // 
-    char nickName1[] = { "Jason" };
-
-    strcpy(player.name, nickName1);
-
-    printf("player의 이름 : %s", player.name);
+    // 심볼릭 상수 : 메모리 공간을 가지고 있는 상수 ex) const int data
+    // 리터럴 상수 : 메모리 공간이 없는 상수 ex) 10, "Count"
     */
 
-    // 문제이름 : 합
+    // 포인터 상수
     /*
-    // 입력 값 n이 주어졌을때, 1부터 n까지의 합 구하는 프로그램
+    int variable = 10;
+    int variable2 = 20;
 
-    // 예제 입력
-    // n = 4
+    const int a = 10;
+    // const가 자료형 * 앞에 들어가게 되면 포인터의 메모리 공간 상수화
+    int* const pointer = &variable;
 
-    // 예제 출력
-    // 10
+    //pointer = &variable2;
 
-    int n = 0;  // 입력 값 n 변수
-    int sum = 0;    // 누적해서 값을 출력하는 변수
+    //printf("pointer변수가 가리키는 값 : %d", *pointer);
 
-    scanf_s("%d", &n);
+    // pointer : 포인터 변수 자체 (메모리 주소 저장한 값 출력)
+    // *pointer : 포인터가 가리키는 메모리 공간의 값 출력
 
-    for (int i = 1; i <= n; i++)
-    {
-        sum += i;
-    }
-
-    printf("결과 값 : %d", sum);
+    *pointer = 30;
+    variable = 50;
     */
 
-    // 문제 : 역순 별 찍기
-    /*
-    // 예제 출력
-    //     *
-    //    **
-    //   ***
-    //  ****
-    // *****
+    // 상수 지시 포인터
+    int data = 10;
+    int data2 = 20;
 
-    for (int i = 1; i <= 5; i++)
-    {
-        for (int j = 1; j <= 5 - i; j++)
-        {
-            printf(" ");
-        }
+    const int* pointer = &data;
 
-        for (int k = 1; k <= i; k++)
-        {
-            printf("*");
-        }
+    pointer = &data2;
 
-        printf("\n");
-    }
-    */
+    // 상수 지시 포인터는 가리키는 포인터 변수를 상수화
+    // 가리키고 있는 메모리 공간은 상수화 X
+    data2 = 30;
+
+    // *pointer = 100;
+
+    // string -> [H][e][l][l][o][\0]
+    // OS read only Data 영역을 접근할 수 없도록 설정
+    const char* string = "Hello";
+
+    // *string = 'A';
+    string = "LOL";
 
     return 0;
 }
