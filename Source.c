@@ -1,61 +1,62 @@
 #include <stdio.h>
 
+void CallByValue(int x)
+{
+    x = 100;
+    printf("함수 내부에 있는 값 : %d\n", x);
+}
+
+void CallByReference(int * x)
+{
+    *x = 100;
+}
 
 int main()
 {
-    // 상수에 대한 이해
+    // scanf 함수 변수 입력
     /*
-    const int value = 10;
+    int value = 0;
+    int value2 = 0;
+    
+    scanf_s("value : %d, value2 : %d\n", &value, &value2);
 
-    printf("value 변수의 값 : %d", value);
-
-    // value의 값은 const로 상수화되었으므로 바꿀 수 없음
-    // value = 20;
-
-    // 심볼릭 상수 : 메모리 공간을 가지고 있는 상수 ex) const int data
-    // 리터럴 상수 : 메모리 공간이 없는 상수 ex) 10, "Count"
+    printf("value의 값 : %d, value2의 값 : %d", value, value2);
     */
 
-    // 포인터 상수
+    // scanf 함수 배열 입력
     /*
-    int variable = 10;
-    int variable2 = 20;
+    char name[10];
 
-    const int a = 10;
-    // const가 자료형 * 앞에 들어가게 되면 포인터의 메모리 공간 상수화
-    int* const pointer = &variable;
+    // 배열의 크기는 컴파일 시점에 크기가 정해짐
+    // 배열의 크기를 명시적으로 scanf_s()에게 알려주어야 함
+    scanf_s("%s", name, sizeof(name));
 
-    //pointer = &variable2;
-
-    //printf("pointer변수가 가리키는 값 : %d", *pointer);
-
-    // pointer : 포인터 변수 자체 (메모리 주소 저장한 값 출력)
-    // *pointer : 포인터가 가리키는 메모리 공간의 값 출력
-
-    *pointer = 30;
-    variable = 50;
+    printf("%s", name);
     */
 
-    // 상수 지시 포인터
-    int data = 10;
-    int data2 = 20;
+    // 오븐 시계
+    
+    int A, B;
+    scanf_s("%d %d", &A, &B);
 
-    const int* pointer = &data;
+    int C;
+    scanf_s("%d", &C);
 
-    pointer = &data2;
+    if ((A >= 0 && A <= 23) && (B >= 0 && B <= 59))
+    {
+        printf("%d %d", A, B);
+    }
 
-    // 상수 지시 포인터는 가리키는 포인터 변수를 상수화
-    // 가리키고 있는 메모리 공간은 상수화 X
-    data2 = 30;
+    // 값에 의한 전달과 참조에 의한 전달
+    /*
+    printf("%d\n", value);
 
-    // *pointer = 100;
+    CallByValue(value);
 
-    // string -> [H][e][l][l][o][\0]
-    // OS read only Data 영역을 접근할 수 없도록 설정
-    const char* string = "Hello";
+    printf("%d\n", value);
 
-    // *string = 'A';
-    string = "LOL";
+    CallByReference(&value);
+    */
 
     return 0;
 }

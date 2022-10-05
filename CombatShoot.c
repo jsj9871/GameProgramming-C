@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <time.h>
-
+/*
 #define MAX_X 50
 #define MAX_Y 100
 
@@ -479,4 +479,4 @@ void Gameover()
     printf("종료하려면 아무키나 입력하시요");
     system("pause > NUL");
     exit(1);
-}
+}*/
