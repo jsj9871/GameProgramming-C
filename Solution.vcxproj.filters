@@ -113,5 +113,8 @@
     <ClInclude Include="2022.10.06(배열 포인터).h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="2022.10.07(선택지 게임(서울 2033)).h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

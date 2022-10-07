@@ -172,6 +172,7 @@
     <ClInclude Include="2022.09.23(더블 버퍼링).h" />
     <ClInclude Include="2022.09.22%28알고리즘%29.h" />
     <ClInclude Include="2022.10.06(배열 포인터).h" />
+    <ClInclude Include="2022.10.07(선택지 게임(서울 2033)).h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

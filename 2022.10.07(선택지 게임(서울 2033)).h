@@ -30,7 +30,7 @@ void gotoXY(int x, int y)
 int main()
 {
     // 서울 2033 (선택지) 게임
-    
+
     int x = 15;
     int y = 60;
 
@@ -39,7 +39,7 @@ int main()
     char key;
 
     while (1)
-    {   
+    {
         switch (scene)
         {
         case 1: // 첫번째 맵
@@ -68,22 +68,22 @@ int main()
 
         switch (key)
         {
-            case 75:    // ← 입력
-                if (x > 15)
-                    x -= 65;
-                    break;
+        case 75:    // ← 입력
+            if (x > 15)
+                x -= 65;
+            break;
 
-            case 77:   // → 입력
-                if (x < 80)
-                    x += 65;
-                    break;
+        case 77:   // → 입력
+            if (x < 80)
+                x += 65;
+            break;
         }
 
         if (GetAsyncKeyState(VK_SPACE))
         {
             scene++;
         }
-        
+
         system("cls");
     }
     /*
